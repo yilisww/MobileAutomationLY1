@@ -7,11 +7,6 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Thread.sleep;
-
-/**
- * Created by mrahman on 1/15/17.
- */
 public class NavigateUi extends MobileAPI {
 
     public void home()throws InterruptedException{

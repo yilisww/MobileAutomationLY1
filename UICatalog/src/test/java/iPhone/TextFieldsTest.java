@@ -6,9 +6,6 @@ import navigate.NavigateUi;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
-/**
- * Created by mrahman on 1/15/17.
- */
 public class TextFieldsTest extends NavigateUi {
 
     TextFields textFields = new TextFields();

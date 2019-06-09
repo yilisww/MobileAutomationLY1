@@ -6,11 +6,6 @@ import common.MobileAPI;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
-import java.rmi.MarshalledObject;
-
-/**
- * Created by Bilal on 24-01-2017.
- */
 public class PickerTest extends MobileAPI {
     String[] pickerName = {"Chris Armstrong","3"};
     String[] pickerDate = {"March","10","2018"};
@@ -27,7 +22,7 @@ public class PickerTest extends MobileAPI {
         picker().getUIPicker();//.selectPickerTwoWheels("Chris Armstrong","3");
         scrollKeys(ad, pickerName,"//UIAPicker[1]");
     }
-    //@Test
+    @Test
     public void testDatePicker(){
         UiCatalog uiCatalog = PageFactory.initElements(ad, UiCatalog.class);
         uiCatalog.getPickers();

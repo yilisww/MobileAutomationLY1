@@ -8,19 +8,14 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by mrahman on 9/5/15.
- */
 public class HomePage extends MobileAPI {
 
     @Test
     public void testName() throws Exception {
-
     }
 
     @Test
     public void home()throws InterruptedException{
-
         List<WebElement> elements = new ArrayList<WebElement>();
         sleep(1);
         elements = ad.findElements(By.xpath("//UIAApplication[1]/UIAWindow[2]/UIATableView[1]"));

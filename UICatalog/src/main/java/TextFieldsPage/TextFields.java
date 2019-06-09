@@ -2,9 +2,6 @@ package TextFieldsPage;
 
 import common.MobileAPI;
 
-/**
- * Created by mrahman on 1/15/17.
- */
 public class TextFields extends MobileAPI {
 
     public void typeOnUiTextField(){

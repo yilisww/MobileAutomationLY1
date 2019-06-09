@@ -2,9 +2,6 @@ package AlertsPage;
 
 import common.MobileAPI;
 
-/**
- * Created by mrahman on 1/15/17.
- */
 public class Alerts extends MobileAPI{
     public void showActionSheetSimple(){
         clickByXpath("//UIAApplication[1]/UIAWindow[2]/UIATableView[1]/UIATableCell[1]");

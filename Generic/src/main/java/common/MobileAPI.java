@@ -27,24 +27,27 @@ import java.util.concurrent.TimeUnit;
 public class MobileAPI {
 
     public static AppiumDriver ad = null;
+    public File appDirectory = null;
+    public File findApp = null;
+    public DesiredCapabilities cap = null;
+    /* not necessary
     public String OS = null;
     public String deviceName = null;
     public String deviceType = null;
     public String appType = null;
     public String version = null;
-    public File appDirectory = null;
-    public File findApp = null;
-    public DesiredCapabilities cap = null;
+    public String appName = null;
+     */
 
-    @Parameters({"OS","appType","deviceType", "deviceName","version"})
+    @Parameters({"OS","appType","deviceType", "deviceName","version", "appName"})
     @BeforeMethod
     public void setUp(String OS,String appType,String deviceType,String deviceName,
-                      String version)throws IOException,InterruptedException{
+                      String version, String appName)throws IOException,InterruptedException{
 
         if(OS.equalsIgnoreCase("ios")){
             if(appType.contains("iPhone")){
-                appDirectory = new File("/Users/mrahman/develop/MobileAutomationJuly2018/UICatalog/src/app/UICatalog6.1.app.zip");
-                findApp = new File(appDirectory,"UICatalog6.1.app.zip");
+                appDirectory = new File("Generic/src/app");
+                findApp = new File(appDirectory,appName);
                 if(deviceType.equalsIgnoreCase("RealDevice")){
                     cap = new DesiredCapabilities();
                     cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
@@ -52,7 +55,7 @@ public class MobileAPI {
                     cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, version);
                     cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
                     cap.setCapability(MobileCapabilityType.APP, findApp.getAbsolutePath());
-                    ad = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), cap);
+                    ad = new IOSDriver(new URL("http://localhost:4723/wd/hub"), cap);
                     ad.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
                 }else if (deviceType.equalsIgnoreCase("Simulator")){
@@ -62,14 +65,14 @@ public class MobileAPI {
                     cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, version);
                     cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
                     cap.setCapability(MobileCapabilityType.APP, appDirectory);//findApp.getAbsolutePath()
-                    ad = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), cap);
+                    ad = new IOSDriver(new URL("http://localhost:4723/wd/hub"), cap);
                     ad.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                 }
 
 
             }else if(appType.equalsIgnoreCase("iPad 2")){
-                appDirectory = new File("IOS/src/app");
-                findApp = new File(appDirectory,"UICatalog6.1.app.zip");
+                appDirectory = new File("Generic/src/app");
+                findApp = new File(appDirectory,appName);
                 if(deviceType.contains("RealDevice")){
                     cap = new DesiredCapabilities();
                     cap.setCapability(MobileCapabilityType.DEVICE_NAME,deviceName);
@@ -77,7 +80,7 @@ public class MobileAPI {
                     cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, version);
                     cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
                     cap.setCapability(MobileCapabilityType.APP, findApp.getAbsolutePath());
-                    ad = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), cap);
+                    ad = new IOSDriver(new URL("http://localhost:4723/wd/hub"), cap);
                     ad.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
                 }else if (deviceType.equalsIgnoreCase("Simulator")){
@@ -87,7 +90,7 @@ public class MobileAPI {
                     cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, version);
                     cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
                     cap.setCapability(MobileCapabilityType.APP, findApp.getAbsolutePath());
-                    ad = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), cap);
+                    ad = new IOSDriver(new URL("hhttp://localhost:4723/wd/hub"), cap);
                     ad.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
                 }
@@ -95,15 +98,15 @@ public class MobileAPI {
 
         }else if(OS.contains("Android")){
             if(appType.contains("Phone")){
-                appDirectory = new File("NYP/src/app");
-                findApp = new File(appDirectory,"nyp.apk");
+                appDirectory = new File("Generic/src/app");
+                findApp = new File(appDirectory,appName);
                 if(deviceType.equalsIgnoreCase("RealDevice")){
                     cap = new DesiredCapabilities();
                     cap.setCapability(MobileCapabilityType.DEVICE_NAME,deviceName);
                     cap.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
                     cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, version);
                     cap.setCapability(MobileCapabilityType.APP, findApp.getAbsolutePath());
-                    ad = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), cap);
+                    ad = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), cap);
                     ad.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
                 }else if (deviceType.equalsIgnoreCase("Emulator")){
@@ -113,7 +116,7 @@ public class MobileAPI {
                     cap.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
                     cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, version);
                     cap.setCapability(MobileCapabilityType.APP, findApp.getAbsolutePath());
-                    ad = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), cap);
+                    ad = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), cap);
                     ad.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                 }
 
@@ -137,18 +140,14 @@ public class MobileAPI {
                     ad = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), cap);
                     ad.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                 }
-
             }
 
         }
-
-
-
-
     }
 
     @AfterMethod
-    public void cleanUpApp(){
+    public void cleanUpApp() throws InterruptedException {
+        sleep(1000);
         ad.quit();
     }
 

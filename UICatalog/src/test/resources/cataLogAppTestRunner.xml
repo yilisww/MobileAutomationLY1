@@ -7,9 +7,11 @@
     <parameter name="deviceType" value="Simulator"/>
     <parameter name="deviceName" value="iPhone Simulator"/>
     <parameter name="version" value="10.3"/>
+    <parameter name="appName" value="UICatalog6.1.app.zip"/>
 
     <test name="Go to Home page" preserve-order="true">
         <classes>
+            <class name="ipad.HomePage"/>
             <class name="iPhone.ButtonTest"/>
             <class name="iPhone.TextFieldsTest"/>
             <class name="iPhone.PickerTest"/>

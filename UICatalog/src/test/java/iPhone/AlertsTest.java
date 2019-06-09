@@ -6,9 +6,7 @@ import common.MobileAPI;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
-/**
- * Created by Bilal on 25-01-2017.
- */
+
 public class AlertsTest extends MobileAPI {
     public Alerts alerts(){
         UiCatalog uiCatalog = PageFactory.initElements(ad, UiCatalog.class);
