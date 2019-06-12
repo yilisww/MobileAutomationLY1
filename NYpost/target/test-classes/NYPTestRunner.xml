@@ -7,13 +7,12 @@
     <parameter name="deviceType" value="Emulator"/>
     <parameter name="deviceName" value="emulator-5554"/>
     <parameter name="version" value="8.1.0"/>
-    <parameter name="moduleName" value="CNBC"/>
-    <parameter name="appName" value="CNBC.apk"/>
+    <parameter name="moduleName" value="NYP"/>
+    <parameter name="appName" value="NYpost.apk"/>
 
     <test name="Go to Home page" preserve-order="true">
         <classes>
-            <class name="testCNBC.TestHomePage"/>
-            <class name="testCNBC.TestSearchPage"/>
+            <class name="testNYpost.TestMainPage"/>
         </classes>
     </test>
 </suite>

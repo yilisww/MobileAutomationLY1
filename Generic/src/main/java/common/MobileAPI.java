@@ -55,7 +55,7 @@ public class MobileAPI {
                     cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, version);
                     cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
                     cap.setCapability(MobileCapabilityType.APP, findApp.getAbsolutePath());
-                    ad = new IOSDriver(new URL("http://localhost:4723/wd/hub"), cap);
+                    ad = new IOSDriver(new URL("http://localhost:4723/wd/hub"), cap); // appium port
                     ad.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
                 }else if (deviceType.equalsIgnoreCase("Simulator")){
@@ -70,7 +70,7 @@ public class MobileAPI {
                 }
 
 
-            }else if(appType.equalsIgnoreCase("iPad 2")){
+            }else if(appType.equalsIgnoreCase("iPad")){
                 appDirectory = new File("Generic/src/app");
                 findApp = new File(appDirectory,appName);
                 if(deviceType.contains("RealDevice")){
@@ -164,15 +164,12 @@ public class MobileAPI {
     public void typeByXpath(String locator, String value, Keys key){
         ad.findElement(By.xpath(locator)).sendKeys(value);
     }
-    public void typeByXpath(String locator, String value){
-        ad.findElement(By.xpath(locator)).sendKeys(value);
-    }
+
     public List<String> getTexts(List<WebElement> elements){
         List<String> text = new ArrayList<String>();
         for(WebElement element:elements){
             text.add(element.getText());
         }
-
         return text;
     }
     public static void scrollKeys(AppiumDriver driver, String[] list, String parent) {
