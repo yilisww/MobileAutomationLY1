@@ -7,9 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="UICatalog" />
-        <module name="AlibabaExpress" />
-        <module name="Generic" />
         <module name="Ebay" />
+        <module name="Generic" />
+        <module name="AlibabaExpress" />
         <module name="CNBC" />
         <module name="NYpost" />
       </profile>
